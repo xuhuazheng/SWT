@@ -2,5 +2,5 @@
 .*
 !.gitignore
 #/export/
-#/src/com
+/src/com/xhz/test
 /src/basic/widget
