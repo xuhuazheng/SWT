@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="jar" name="SWT">
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+	
+    <target name="init">
+        <mkdir dir="bin"/>
+    	<mkdir dir="export" />
+    </target>
+	
+    <target depends="init" name="build">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}" encoding="utf8">
+            <src path="src"/>
+        </javac>
+    </target>
+
+	<target name="jar" depends="build" description="jar pack the classes">
+		<tstamp></tstamp>
+		<jar destfile="export/SWT-${DSTAMP}.jar" basedir="bin/" excludes="**/test/">
+			<manifest>
+                <attribute name="Built-By" value="${user.name}"/> 
+            </manifest> 
+		</jar>
+		<jar destfile="export/SWT-${DSTAMP}-src.jar" basedir="src/" excludes="**/test/">
+            <manifest> 
+                <attribute name="Built-By" value="${user.name}"/> 
+            </manifest> 
+		</jar>
+	</target>
+</project>
