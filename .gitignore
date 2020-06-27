@@ -1,5 +1,5 @@
-/bin/
+#/bin/
 .*
 !.gitignore
 #/export/
-/src/com
+#/src/com
